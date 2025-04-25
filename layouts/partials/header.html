@@ -56,7 +56,7 @@
 
     <!-- This block handles relative paths to the preview image -->
     {{- if .File.Dir -}}
-    {{ if not (hasPrefix $imageLink "/") -}}
+    {{ if and (not (hasPrefix $imageLink "/")) (not (hasPrefix $imageLink "http")) -}}
     {{ $imageLink = path.Join .File.Dir $imageLink -}}
     {{ end -}}
     {{ end -}}
